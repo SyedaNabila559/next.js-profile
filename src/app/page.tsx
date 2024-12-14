@@ -9,17 +9,17 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-pink-300 bg-cover bg-center">
       <main className="flex flex-col lg:flex-row items-center justify-between text-center w-full px-4 md:px-8 lg:px-16 py-6 md:py-10 lg:py-14">
-        
+
         {/* Intro Section */}
         <div className="text-center lg:text-left lg:ml-16 md:mb-6">
-          <p className="text-black text-2xl md:text-3xl lg:text-4xl">Hi, I am Nabila Bannay Khan</p>
-          <h1 className="text-yellow-300 text-4xl md:text-6xl lg:text-7xl font-bold mt-2 animate-slide-left">Welcome to My Portfolio</h1>
-          <p className="text-blue-600 text-lg md:text-2xl mt-2">A Front-end Developer</p>
+          <p className="text-black text-2xl sm:text-3xl lg:text-4xl">Hi, I am Nabila Bannay Khan</p>
+          <h1 className="text-yellow-300 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-2 animate-slide-left">Welcome to My Portfolio</h1>
+          <p className="text-blue-600 text-lg sm:text-xl md:text-2xl mt-2">A Front-end Developer</p>
 
           {/* Resume Button */}
           <div className="mt-4 md:mt-6 lg:mt-8">
             <Link href="https://milestone-psi.vercel.app/" target="_blank">
-              <a className="bg-blue-400 rounded border-2 border-white text-white p-3 md:p-4 hover:bg-gray-200 transition duration-200">
+              <a className="bg-blue-400 rounded border-2 border-white text-white py-3 px-6 md:py-4 md:px-8 hover:bg-gray-200 transition duration-200">
                 My Resume
               </a>
             </Link>
@@ -45,7 +45,7 @@ export default function Home() {
           <img
             src="/images/me.png"
             alt="Profile"
-            className="rounded-full w-[150px] h-[150px] md:w-[250px] md:h-[250px] lg:w-[400px] lg:h-[400px] object-cover border-4 border-gray-700 animate-float transition-all duration-300"
+            className="rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] object-cover border-4 border-gray-700 animate-float transition-all duration-300"
           />
         </div>
 
@@ -94,6 +94,24 @@ export default function Home() {
           100% {
             transform: scale(1);
             opacity: 1;
+          }
+        }
+
+        @keyframes bubble-small {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-20px);
+          }
+        }
+
+        @keyframes bubble-medium {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-40px);
           }
         }
 
