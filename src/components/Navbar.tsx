@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,71 +13,75 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black text-pink-300 p-5 relative">
-      <div className="flex justify-between items-center">
-        {/* Brand name */}
-        <h1 className="text-xl lg:text-2xl font-bold ml-5">
-          SYEDA
-        </h1>
+    <nav className="bg-black text-pink-300 p-4 lg:p-5 fixed top-0 left-0 w-full z-50">
+      {/* Desktop Navbar */}
+      <div className="hidden lg:flex justify-between items-center">
+        {/* Brand */}
+        <h1 className="text-xl lg:text-2xl font-bold ml-4">SYEDA</h1>
 
-        {/* Mobile Menu Button */}
-        <button onClick={toggleMenu} className="lg:hidden mr-5">
-          <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl" />
-        </button>
-
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-12 mr-10 mt-2">
+        {/* Menu Links */}
+        <ul className="flex space-x-8 mr-8 mt-2">
           <li className="relative group">
-            <Link href="/" className="text-xl">Home</Link>
-            <div className="absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <Link href="/" className="text-lg">Home</Link>
+            <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
               <FontAwesomeIcon icon={faHome} className="text-gray-800" />
             </div>
           </li>
           <li className="relative group">
-            <Link href="/about" className="text-xl">About</Link>
-            <div className="absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <Link href="/about" className="text-lg">About</Link>
+            <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
               <FontAwesomeIcon icon={faUser} className="text-gray-800" />
             </div>
           </li>
           <li className="relative group">
-            <Link href="/projects" className="text-xl">Projects</Link>
-            <div className="absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <Link href="/projects" className="text-lg">Projects</Link>
+            <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
               <FontAwesomeIcon icon={faProjectDiagram} className="text-gray-800" />
             </div>
           </li>
           <li className="relative group">
-            <Link href="/contact" className="text-xl">Contact</Link>
-            <div className="absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <Link href="/contact" className="text-lg">Contact</Link>
+            <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
               <FontAwesomeIcon icon={faEnvelope} className="text-gray-800" />
             </div>
           </li>
         </ul>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu (Burger Icon + Menu Logic) */}
+      <div className="lg:hidden flex justify-between items-center">
+        {/* Brand Name */}
+        <h1 className="text-xl lg:text-2xl font-bold ml-4">SYEDA</h1>
+        {/* Toggle Button */}
+        <button onClick={toggleMenu} className="text-2xl mr-4">
+          <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <ul className="lg:hidden flex flex-col items-start bg-blue-300 p-5 space-y-5">
-          <li className="flex items-center space-x-4">
-            <FontAwesomeIcon icon={faHome} className="text-black" />
-            <Link href="/" onClick={toggleMenu} className="text-lg">Home</Link>
+        <ul className="lg:hidden bg-blue-400 text-black p-4 space-y-4">
+          <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faHome} />
+            <Link href="/" onClick={() => setIsOpen(false)} className="text-lg">Home</Link>
           </li>
-          <li className="flex items-center space-x-4">
-            <FontAwesomeIcon icon={faUser} className="text-black" />
-            <Link href="/about" onClick={toggleMenu} className="text-lg">About</Link>
+          <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faUser} />
+            <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg">About</Link>
           </li>
-          <li className="flex items-center space-x-4">
-            <FontAwesomeIcon icon={faProjectDiagram} className="text-black" />
-            <Link href="/projects" onClick={toggleMenu} className="text-lg">Projects</Link>
+          <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faProjectDiagram} />
+            <Link href="/projects" onClick={() => setIsOpen(false)} className="text-lg">Projects</Link>
           </li>
-          <li className="flex items-center space-x-4">
-            <FontAwesomeIcon icon={faEnvelope} className="text-black" />
-            <Link href="/contact" onClick={toggleMenu} className="text-lg">Contact</Link>
+          <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faEnvelope} />
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg">Contact</Link>
           </li>
         </ul>
       )}
 
       {/* Divider */}
-      <div className='bg-white w-full h-1 mt-6 lg:mt-8'></div>
+      <div className="bg-white w-full h-1 mt-2 lg:mt-4"></div>
     </nav>
   );
 };
