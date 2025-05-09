@@ -2,7 +2,15 @@
 
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faProjectDiagram, faEnvelope, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faUser,
+  faProjectDiagram,
+  faEnvelope,
+  faBars,
+  faTimes,
+  faTools,
+} from '@fortawesome/free-solid-svg-icons';
 import Link from "next/link";
 
 const Navbar = () => {
@@ -13,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black text-pink-300 p-4 lg:p-5 fixed top-0 left-0 w-full z-50">
+    <nav className="bg-black text-pink-300 px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-4 fixed top-0 left-0 w-full z-50">
       {/* Desktop Navbar */}
       <div className="hidden lg:flex justify-between items-center">
         {/* Brand */}
@@ -34,6 +42,12 @@ const Navbar = () => {
             </div>
           </li>
           <li className="relative group">
+            <Link href="/skills" className="text-lg">Skills</Link>
+            <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
+              <FontAwesomeIcon icon={faTools} className="text-gray-800" />
+            </div>
+          </li>
+          <li className="relative group">
             <Link href="/projects" className="text-lg">Projects</Link>
             <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
               <FontAwesomeIcon icon={faProjectDiagram} className="text-gray-800" />
@@ -48,11 +62,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Mobile Menu (Burger Icon + Menu Logic) */}
+      {/* Mobile Navbar */}
       <div className="lg:hidden flex justify-between items-center">
-        {/* Brand Name */}
-        <h1 className="text-xl lg:text-2xl font-bold ml-4">SYEDA</h1>
-        {/* Toggle Button */}
+        <h1 className="text-xl font-bold ml-4">SYEDA</h1>
         <button onClick={toggleMenu} className="text-2xl mr-4">
           <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
         </button>
@@ -68,6 +80,10 @@ const Navbar = () => {
           <li className="flex items-center space-x-3">
             <FontAwesomeIcon icon={faUser} />
             <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg">About</Link>
+          </li>
+          <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faTools} />
+            <Link href="/skills" onClick={() => setIsOpen(false)} className="text-lg">Skills</Link>
           </li>
           <li className="flex items-center space-x-3">
             <FontAwesomeIcon icon={faProjectDiagram} />
